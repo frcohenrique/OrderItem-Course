@@ -68,5 +68,30 @@ public class Order {
 		return total;
 	}
 	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("ORDER SUMMARY:\n");
+		sb.append("Order status: ");
+		sb.append(status + "\n");
+		sb.append("Client: ");
+		sb.append(client.getName());
+		sb.append(" (" + client.getBirthDate() + ") - ");
+		sb.append(client.getEmail() + "\n");
+		
+		sb.append("Order items:\n");
+		for (OrderItem orderItem : items) {
+			sb.append(orderItem.getProduct().getName() + ", $");
+			sb.append(String.format("%.2f", orderItem.getPrice()) + ", ");
+			sb.append("Quantity: "+orderItem.getQuantity() + ", ");
+			sb.append("Subtotal: $");
+			sb.append(orderItem.subTotal() + "\n");
+		}
+		sb.append("\nTotal price: $");
+		sb.append(total());
+		
+		
+		return sb.toString();
+	}
+	
 	
 }
